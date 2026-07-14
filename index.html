@@ -1,133 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MOVs Repository</title>
 
-<!-- ======================================
-                CSS SECTION
-======================================= -->
+
+<!-- ==============================
+        CSS STYLE SECTION
+================================= -->
 
 <style>
 
-/* =========================
-      GLOBAL SETTINGS
-========================= */
+/* GLOBAL SETTINGS */
 
 *{
     box-sizing:border-box;
     font-family:Arial, sans-serif;
 }
 
+
 html,
 body{
+
     margin:0;
+
     background:transparent;
+
     color:#fff;
-    overflow:hidden;
+
 }
 
-body{
-    position:relative;
-    min-height:100vh;
-}
 
-/* =========================
-       WIND ANIMATION
-========================= */
 
-.wind{
-    position:fixed;
-    width:180px;
-    height:4px;
-    border-radius:20px;
-    background:
-    linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.35),
-        transparent
-    );
-
-    filter:blur(1px);
-    animation:
-    windMove linear infinite;
-}
-
-@keyframes windMove{
-
-    0%{
-        transform:translateX(-250px);
-        opacity:0;
-    }
-
-    10%,
-    90%{
-        opacity:.8;
-    }
-
-    100%{
-        transform:
-        translateX(calc(100vw + 250px));
-        opacity:0;
-    }
-}
-
-/* =========================
-        MAIN LAYOUT
-========================= */
+/* MAIN CONTAINER */
 
 .container{
+
     display:flex;
+
     justify-content:center;
-    gap:200px;
+
+    gap:120px;
+
     padding:30px;
-    filter:url(#gooey);
+
 }
+
+
 
 .main{
+
     text-align:center;
+
 }
+
+
+
+/* TITLE */
 
 h1{
+
     text-align:center;
-    font-size:42px;
-    font-weight:bold;
-    letter-spacing:2px;
-    background:linear-gradient(
-        180deg,
-        #fff8c7 0%,
-        #ffe76b 15%,
-        #ffd700 35%,
-        #f4b400 55%,
-        #b8860b 75%,
-        #fff3b0 100%
-    );
 
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    color:white;
-    animation:goldShimmer 2.5s ease-in-out infinite;
-    text-shadow:
-        0 2px 0 #8b6508,
-        0 0 8px rgba(255,215,0,.6),
-        0 0 15px rgba(255,215,0,.5),
-        0 0 25px rgba(255,215,0,.35),
-        0 6px 12px rgba(80,45,0,.5);
 }
 
-/* =========================
-        LIQUID RING
-========================= */
+
+
+/* OUTER RING BUTTON */
 
 .ring{
+
     width:182px;
     height:182px;
     padding:6px;
     border-radius:50%;
+
     background:
     linear-gradient(
         145deg,
@@ -138,26 +89,42 @@ h1{
         #777,
         #fff
     );
+
     cursor:pointer;
+
+    position:relative;
+
     animation:
-    liquidFloat 5s ease-in-out infinite,
-    pulseBlob 3s ease-in-out infinite;
+        liquidFloat 5s ease-in-out infinite,
+        pulseBlob 3s ease-in-out infinite;
+
+    transition:.4s;
+
 }
 
-/* =========================
-        INNER BALL
-========================= */
+/* INNER BALL */
 
 .ball{
+
     width:100%;
     height:100%;
+
+    border-radius:50%;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     text-align:center;
+
     font-weight:bold;
+
     font-size:22px;
-    color:#fff;
+
+    color:white;
+
     background:
     linear-gradient(
         145deg,
@@ -173,285 +140,455 @@ h1{
         #d9f8ff
     );
 
-    animation:
-    blobMorph 6s ease-in-out infinite;
-}
+    animation:blobMorph 6s ease-in-out infinite;
 
-/* FLOATING EFFECT */
+}
 
 @keyframes liquidFloat{
-    0%,
-    100%{
-        transform:translateY(0);
-    }
 
-    25%{
-        transform:translate(-4px,-8px);
-    }
-
-    50%{
-        transform:translate(5px,5px);
-    }
-
-    75%{
-        transform:translate(2px,-5px);
-    }
+0%{
+transform:translateY(0px);
 }
 
-/* PULSE EFFECT */
+25%{
+transform:translateY(-8px) translateX(-4px);
+}
+
+50%{
+transform:translateY(5px) translateX(5px);
+}
+
+75%{
+transform:translateY(-5px) translateX(2px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
 
 @keyframes pulseBlob{
-    0%,
-    100%{
-        transform:scale(1);
-    }
 
-    50%{
-        transform:scale(1.06);
-    }
+0%{
+transform:scale(1);
 }
 
-/* MORPHING SHAPE */
+50%{
+transform:scale(1.06);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
 
 @keyframes blobMorph{
-    0%,
-    100%{
-        border-radius:
-        45% 55% 50% 50% /
-        55% 45% 55% 45%;
-    }
 
-    25%{
-        border-radius:
-        60% 40% 45% 55% /
-        40% 60% 50% 50%;
-    }
+0%,100%{
 
-    50%{
-        border-radius:
-        50% 50% 60% 40% /
-        60% 40% 45% 55%;
-    }
-  
-    75%{
-        border-radius:
-        42% 58% 55% 45% /
-        55% 45% 60% 40%;
-    }
-}
-
-/* SHIMMERING GOLD */
-  
-@keyframes goldShimmer{
-
-    0%{
-        filter:brightness(1);
-    }
-
-    50%{
-        filter:brightness(1.4);
-    }
-
-    100%{
-        filter:brightness(1);
-    }
+border-radius:
+45% 55% 50% 50% /
+55% 45% 55% 45%;
 
 }
 
-/* =========================
-       FOLDER SYSTEM
-========================= */
+25%{
+
+border-radius:
+60% 40% 45% 55% /
+40% 60% 50% 50%;
+
+}
+
+50%{
+
+border-radius:
+50% 50% 60% 40% /
+60% 40% 45% 55%;
+
+}
+
+75%{
+
+border-radius:
+42% 58% 55% 45% /
+55% 45% 60% 40%;
+
+}
+
+}
+
+/* FOLDER DISPLAY LEVELS */
 
 .level,
 .level2{
+
     display:none;
+
     flex-direction:column;
+
     gap:8px;
+
     margin-top:10px;
+
 }
-  
+
+
+
+/* FOLDER BUTTON */
+
 .folder{
+
     background:#e7c04a;
+
     color:#222;
+
     padding:10px;
+
     border-radius:8px;
+
     cursor:pointer;
+
 }
+
+
+
+/* SUB FOLDER LINKS */
 
 .sub{
+
     display:block;
+
     background:#bfe8ff;
+
     color:#003;
+
     text-decoration:none;
+
     padding:8px;
+
     border-radius:6px;
+
 }
-  
+
+
+
 </style>
-  
+
+
 </head>
-  
+
+
+
 <body>
 
-<!-- ======================================
-             WIND PARTICLES
-======================================= -->
 
-<div class="wind" style="top:8%;animation-duration:9s"></div>
-<div class="wind" style="top:18%;animation-duration:7s"></div>
-<div class="wind" style="top:35%;animation-duration:11s"></div>
-<div class="wind" style="top:55%;animation-duration:8s"></div>
-<div class="wind" style="top:75%;animation-duration:10s"></div>
 
 <h1>
 MOVs Repository
 </h1>
 
-<!-- ======================================
-             MAIN CATEGORY BUTTONS
-======================================= -->
+
+
+<!-- =================================
+        MAIN CATEGORY CONTAINER
+================================== -->
+
 
 <div class="container">
 
-<!-- =========================
-          KKB-CDD
-========================= -->
+
+
+<!-- ==========================
+        CATEGORY 1
+=========================== -->
+
+
 <div class="main">
-<div class="ring" onclick="toggleMain('m1')"
+
+
+<div class="ring" onclick="toggleMain('m1')">
+
 <div class="ball">
+
 KKB-CDD
-  
+
 </div>
 
 </div>
+
+
 
 <div id="m1" class="level">
 
-<div class="folder"
-onclick="toggleSub(event,'a')">
+
+
+<!-- FOLDER 1 -->
+
+<div class="folder" onclick="toggleSub(event,'m1f1')">
 
 📁 Folder 1
 
 </div>
 
-<div id="a" class="level2">
 
-<a class="sub"
-target="_blank"
-href="https://example.com">
+<div id="m1f1" class="level2">
 
-📂 Subfolder
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 1
+</a>
 
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 2
+</a>
+
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 3
+</a>
+
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 4
+</a>
+
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 5
+</a>
+
+
+</div>
+
+
+
+
+
+<!-- FOLDER 2 -->
+
+
+<div class="folder" onclick="toggleSub(event,'m1f2')">
+
+📁 Folder 2
+
+</div>
+
+
+<div id="m1f2" class="level2">
+
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 1
+</a>
+
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 2
+</a>
+
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 3
+</a>
+
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 4
+</a>
+
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 5
 </a>
 
 </div>
 
-</div>
+
+
+
+<!-- ADD MORE FOLDERS HERE -->
+
+
 
 </div>
 
-<!-- =========================
-          PCRP
-========================= -->
+
+</div>
+
+
+
+
+
+<!-- ==========================
+        CATEGORY 2
+=========================== -->
+
 
 <div class="main">
+
+
 <div class="ring" onclick="toggleMain('m2')">
+
+
 <div class="ball">
-PCRP<br>(PAGKILOS)
+
+PCRP<br>
+(PAGKILOS)
 
 </div>
 
+
 </div>
+
+
 
 <div id="m2" class="level">
 
-<div class="folder"
-onclick="toggleSub(event,'b')">
+
+
+<div class="folder" onclick="toggleSub(event,'m2f1')">
 
 📁 Folder 1
 
 </div>
 
-<div id="b" class="level2">
 
-<a class="sub"
-target="_blank"
-href="https://example.com">
 
-📂 Subfolder
+<div id="m2f1" class="level2">
 
+
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 1
 </a>
 
-</div>
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 2
+</a>
+
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 3
+</a>
+
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 4
+</a>
+
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 5
+</a>
+
 
 </div>
 
-</div>
+
+
+
+<!-- ADD MORE FOLDERS HERE -->
+
+
 
 </div>
 
-<!-- ======================================
-              SVG GOOEY EFFECT
-======================================= -->
 
-<svg width="0" height="0">
-<filter id="gooey">
-<feGaussianBlur
-in="SourceGraphic"
-stdDeviation="12"
-result="blur"/>
-<feColorMatrix
-in="blur"
-mode="matrix"
-values="
-1 0 0 0 0
-0 1 0 0 0
-0 0 1 0 0
-0 0 0 22 -10"
-result="goo"/>
-<feBlend
-in="SourceGraphic"
-in2="goo"/>
-</filter>
+</div>
 
-</svg>
 
-<!-- ======================================
-            JAVASCRIPT
-======================================= -->
+
+</div>
+
+
+
+
+
+
+<!-- ==============================
+        JAVASCRIPT SECTION
+================================= -->
+
 
 <script>
 
+
 // Open main category
+// Automatically closes other categories
 
 function toggleMain(id){
 
+
     document
     .querySelectorAll('.level')
-    .forEach(x=>{
-        if(x.id!==id){
-            x.style.display='none';
+    .forEach(function(item){
+
+
+        if(item.id !== id){
+
+            item.style.display="none";
+
         }
+
+
     });
 
+
+
     let element=document.getElementById(id);
+
+
+
     element.style.display =
-    element.style.display==='flex'
-    ? 'none'
-    : 'flex';
+
+    element.style.display==="flex"
+
+    ? "none"
+
+    : "flex";
+
+
 }
 
-// Open folder contents
+
+
+
+
+// Open sub folders
+
 function toggleSub(event,id){
+
+
     event.stopPropagation();
+
+
+
     let element=document.getElementById(id);
+
+
+
     element.style.display =
-    element.style.display==='flex'
-    ? 'none'
-    : 'flex';
+
+    element.style.display==="flex"
+
+    ? "none"
+
+    : "flex";
+
+
 }
-  
+
+
+
 </script>
+
+<svg width="0" height="0" style="position:absolute">
+    <filter id="gooey">
+        <feGaussianBlur in="SourceGraphic"
+                        stdDeviation="12"
+                        result="blur"/>
+        <feColorMatrix
+            in="blur"
+            mode="matrix"
+            values="
+            1 0 0 0 0
+            0 1 0 0 0
+            0 0 1 0 0
+            0 0 0 22 -10"
+            result="goo"/>
+        <feBlend in="SourceGraphic" in2="goo"/>
+    </filter>
+</svg>
 
 </body>
 
