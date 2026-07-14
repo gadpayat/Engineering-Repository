@@ -81,54 +81,77 @@ h1{
     width:170px;
     height:170px;
     border-radius:50%;
+    position:relative;
+    overflow:hidden;
     cursor:pointer;
 
     /* Metallic Silver Ring */
-    border:6px solid transparent;
+    border:10px solid transparent;
+background:
+linear-gradient(145deg,
+#ffffff 0%,
+#f7f7f7 8%,
+#d8d8d8 18%,
+#a8a8a8 28%,
+#fdfdfd 42%,
+#7d7d7d 58%,
+#f8f8f8 72%,
+#bcbcbc 86%,
+#ffffff 100%) border-box,
+
+linear-gradient(145deg,
+#f7fdff 0%,
+#d6f5ff 8%,
+#9ee8ff 16%,
+#68d3ff 24%,
+#3fb8f2 34%,
+#8be6ff 44%,
+#2698d7 56%,
+#75dfff 66%,
+#1d7fbc 78%,
+#4cc7f7 90%,
+#d9f8ff 100%) padding-box;
+
+background-origin:border-box;
+background-clip:border-box,padding-box;
+
+    /* Metallic Sky Blue */
     background:
-        linear-gradient(145deg,
-            #ffffff 0%,
-            #f2f2f2 8%,
-            #d9d9d9 18%,
-            #bfbfbf 28%,
-            #f8f8f8 40%,
-            #8d8d8d 52%,
-            #ffffff 65%,
-            #d0d0d0 78%,
-            #9c9c9c 90%,
-            #fefefe 100%) border-box,
+    radial-gradient(circle at 28% 22%,
+        rgba(255,255,255,.95) 0%,
+        rgba(255,255,255,.45) 12%,
+        transparent 18%),
 
-        /* Sky Blue Metallic Sphere */
-        radial-gradient(circle at 30% 25%,
-            #ffffff 0%,
-            #dff8ff 10%,
-            #a8ebff 22%,
-            #71d7ff 40%,
-            #42bff5 58%,
-            #2f9fdf 72%,
-            #247db7 86%,
-            #154d78 100%) padding-box;
-
-    background-origin:border-box;
-    background-clip:border-box,padding-box;
+    linear-gradient(145deg,
+        #f7fdff 0%,
+        #d6f5ff 8%,
+        #9ee8ff 16%,
+        #68d3ff 24%,
+        #3fb8f2 34%,
+        #8be6ff 44%,
+        #2698d7 56%,
+        #75dfff 66%,
+        #1d7fbc 78%,
+        #4cc7f7 90%,
+        #d9f8ff 100%);
 
     display:flex;
     justify-content:center;
     align-items:center;
-    text-align:center;
 
     color:#fff;
     font-size:22px;
     font-weight:bold;
+    text-align:center;
     text-shadow:
         0 1px 2px rgba(0,0,0,.6),
-        0 0 8px rgba(255,255,255,.5);
+        0 0 8px rgba(255,255,255,.4);
 
     box-shadow:
-        inset 0 10px 25px rgba(255,255,255,.65),
-        inset 0 -15px 30px rgba(0,0,0,.25),
-        0 0 15px rgba(0,180,255,.55),
-        0 12px 28px rgba(0,0,0,.35);
+        inset 0 10px 20px rgba(255,255,255,.7),
+        inset 0 -15px 20px rgba(0,0,0,.25),
+        0 0 18px rgba(64,190,255,.6),
+        0 12px 24px rgba(0,0,0,.35);
 
     animation:goo 3s ease-in-out infinite;
     transition:.35s;
@@ -165,6 +188,24 @@ h1{
     50%{
         transform:scale(1.05,.95);
     }
+
+.ball::after{
+    content:"";
+    position:absolute;
+    top:-20%;
+    left:-70%;
+    width:40%;
+    height:140%;
+    background:rgba(255,255,255,.35);
+    transform:rotate(25deg);
+    animation:metalShine 3s linear infinite;
+}
+
+@keyframes metalShine{
+    from{left:-70%;}
+    to{left:140%;}
+}
+        
 }
 
 /* FOLDER LEVELS */
