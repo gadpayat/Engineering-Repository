@@ -1,432 +1,462 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>MOVs Repository</title>
 
-<!-- =========================
+
+<!-- ==============================
         CSS STYLE SECTION
-========================= -->
+================================= -->
 
 <style>
 
 /* GLOBAL SETTINGS */
+
 *{
-    margin:0;
-    padding:0;
     box-sizing:border-box;
     font-family:Arial, sans-serif;
 }
 
+
+html,
 body{
+
+    margin:0;
+
     background:transparent;
-    overflow-x:hidden;
-    color:white;
-}
- 
-/* Animated background effect */
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    background:
-    repeating-linear-gradient(
-        90deg,
-        rgba(255,255,255,0.03),
-        rgba(255,255,255,0.03) 2px,
-        transparent 2px,
-        transparent 90px
-    );
-    animation:wind 12s linear infinite;
+
+    color:#fff;
+
 }
 
-@keyframes wind{
 
-    from{
-        transform:translateX(-120px);
-    }
-    to{
-        transform:translateX(120px);
-    }
-}
-
-/* MAIN TITLE */
-
-h1{
-    text-align:center;
-    padding:25px;
-    font-size:42px;
-    text-shadow:
-    0 0 10px #7de9ff;
-}
 
 /* MAIN CONTAINER */
 
 .container{
+
     display:flex;
+
     justify-content:center;
-    gap:140px;
-    margin-top:30px;
+
+    gap:120px;
+
+    padding:30px;
+
 }
- 
+
+
+
 .main{
+
     text-align:center;
+
 }
 
-/* MAIN BALL BUTTON */
 
-.ball{
-    width:170px;
-    height:170px;
+
+/* TITLE */
+
+h1{
+
+    text-align:center;
+
+}
+
+
+
+/* OUTER RING BUTTON */
+
+.ring{
+
+    width:182px;
+
+    height:182px;
+
+    padding:6px;
+
     border-radius:50%;
-    position:relative;
-    overflow:hidden;
+
+
+    background:
+
+    linear-gradient(
+        145deg,
+        #fff,
+        #ddd,
+        #999,
+        #fff,
+        #777,
+        #fff
+    );
+
+
     cursor:pointer;
 
-    /* Metallic Silver Ring */
-    border:10px solid transparent;
-background:
-linear-gradient(145deg,
-#ffffff 0%,
-#f7f7f7 8%,
-#d8d8d8 18%,
-#a8a8a8 28%,
-#fdfdfd 42%,
-#7d7d7d 58%,
-#f8f8f8 72%,
-#bcbcbc 86%,
-#ffffff 100%) border-box,
-
-linear-gradient(145deg,
-#f7fdff 0%,
-#d6f5ff 8%,
-#9ee8ff 16%,
-#68d3ff 24%,
-#3fb8f2 34%,
-#8be6ff 44%,
-#2698d7 56%,
-#75dfff 66%,
-#1d7fbc 78%,
-#4cc7f7 90%,
-#d9f8ff 100%) padding-box;
-
-background-origin:border-box;
-background-clip:border-box,padding-box;
-
-    /* Metallic Sky Blue */
-    background:
-    radial-gradient(circle at 28% 22%,
-        rgba(255,255,255,.95) 0%,
-        rgba(255,255,255,.45) 12%,
-        transparent 18%),
-
-    linear-gradient(145deg,
-        #f7fdff 0%,
-        #d6f5ff 8%,
-        #9ee8ff 16%,
-        #68d3ff 24%,
-        #3fb8f2 34%,
-        #8be6ff 44%,
-        #2698d7 56%,
-        #75dfff 66%,
-        #1d7fbc 78%,
-        #4cc7f7 90%,
-        #d9f8ff 100%);
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    color:#fff;
-    font-size:22px;
-    font-weight:bold;
-    text-align:center;
-    text-shadow:
-        0 1px 2px rgba(0,0,0,.6),
-        0 0 8px rgba(255,255,255,.4);
-
-    box-shadow:
-        inset 0 10px 20px rgba(255,255,255,.7),
-        inset 0 -15px 20px rgba(0,0,0,.25),
-        0 0 18px rgba(64,190,255,.6),
-        0 12px 24px rgba(0,0,0,.35);
-
-    animation:goo 3s ease-in-out infinite;
-    transition:.35s;
 }
 
-.ball:hover{
-    transform:scale(1.08);
-    box-shadow:
-        inset 0 12px 28px rgba(255,255,255,.8),
-        inset 0 -18px 35px rgba(0,0,0,.3),
-        0 0 25px rgba(135,206,250,.9),
-        0 18px 35px rgba(0,0,0,.45);
-}
 
-.ball::before{
-    content:"";
-    position:absolute;
-    width:55%;
-    height:30%;
-    top:18px;
-    left:28px;
-    border-radius:50%;
-    background:rgba(255,255,255,.45);
-    filter:blur(4px);
-}
+
+/* INNER BALL */
 
 .ball{
-    position:relative;
-    overflow:hidden;
-} 
-        
-@keyframes goo{
 
-    50%{
-        transform:scale(1.05,.95);
-    }
+    width:100%;
 
-.ball::after{
-    content:"";
-    position:absolute;
-    top:-20%;
-    left:-70%;
-    width:40%;
-    height:140%;
-    background:rgba(255,255,255,.35);
-    transform:rotate(25deg);
-    animation:metalShine 3s linear infinite;
+    height:100%;
+
+
+    border-radius:50%;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    text-align:center;
+
+
+    font-weight:bold;
+
+    font-size:22px;
+
+
+    background:
+
+    linear-gradient(
+        145deg,
+        #f7fdff,
+        #d6f5ff,
+        #9ee8ff,
+        #68d3ff,
+        #3fb8f2,
+        #8be6ff,
+        #2698d7,
+        #75dfff,
+        #1d7fbc,
+        #d9f8ff
+    );
+
 }
 
-@keyframes metalShine{
-    from{left:-70%;}
-    to{left:140%;}
-}
-        
-}
 
-/* FOLDER LEVELS */
+
+/* FOLDER DISPLAY LEVELS */
 
 .level,
 .level2{
+
     display:none;
+
     flex-direction:column;
-    gap:10px;
-    margin-top:15px;
+
+    gap:8px;
+
+    margin-top:10px;
+
 }
+
+
 
 /* FOLDER BUTTON */
 
 .folder{
-    background:#f0c14b;
+
+    background:#e7c04a;
+
     color:#222;
-    padding:10px 18px;
+
+    padding:10px;
+
     border-radius:8px;
+
     cursor:pointer;
-    font-weight:bold;
+
 }
 
-/* DOCUMENT LINKS */
+
+
+/* SUB FOLDER LINKS */
 
 .sub{
-    background:#9dd8ff;
+
+    display:block;
+
+    background:#bfe8ff;
+
     color:#003;
-    padding:8px;
-    border-radius:6px;
+
     text-decoration:none;
+
+    padding:8px;
+
+    border-radius:6px;
+
 }
 
-/* FOOTER */
 
-footer{
-    position:fixed;
-    bottom:10px;
-    width:100%;
-    text-align:center;
-    font-size:13px;
-}
 
 </style>
 
+
 </head>
+
+
 
 <body>
 
-<h1>MOVs Repository</h1>
 
-<!-- =========================
-        MAIN BUTTON SECTION
-========================= -->
+
+<h1>
+MOVs Repository
+</h1>
+
+
+
+<!-- =================================
+        MAIN CATEGORY CONTAINER
+================================== -->
+
 
 <div class="container">
 
-<!-- =========================
+
+
+<!-- ==========================
         CATEGORY 1
-========================= -->
+=========================== -->
+
 
 <div class="main">
 
-<div class="ball" onclick="toggle('m1')">
-    <span>KKB-CDD</span>
+
+<div class="ring" onclick="toggleMain('m1')">
+
+<div class="ball">
+
+KKB-CDD
+
 </div>
+
+</div>
+
+
 
 <div id="m1" class="level">
 
-<!-- Folder 1 -->
 
-<div class="folder"
-onclick="event.stopPropagation();toggle('m1f1')">
+
+<!-- FOLDER 1 -->
+
+<div class="folder" onclick="toggleSub(event,'m1f1')">
 
 📁 Folder 1
 
 </div>
 
+
 <div id="m1f1" class="level2">
 
-<a class="sub" target="_blank" href="https://example.com">
-📄 Link 1
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 1
 </a>
 
-<a class="sub" target="_blank" href="https://example.com">
-📄 Link 2
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 2
 </a>
 
-<a class="sub" target="_blank" href="https://example.com">
-📄 Link 3
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 3
 </a>
 
-<a class="sub" target="_blank" href="https://example.com">
-📄 Link 4
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 4
 </a>
 
-<a class="sub" target="_blank" href="https://example.com">
-📄 Link 5
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 5
 </a>
+
 
 </div>
 
-<!-- Folder 2 -->
 
-<div class="folder"
-onclick="event.stopPropagation();toggle('m1f2')">
+
+
+
+<!-- FOLDER 2 -->
+
+
+<div class="folder" onclick="toggleSub(event,'m1f2')">
 
 📁 Folder 2
 
 </div>
 
+
 <div id="m1f2" class="level2">
 
-<a class="sub" target="_blank" href="https://example.com">
-📄 Link 1
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 1
 </a>
 
-<a class="sub" target="_blank" href="https://example.com">
-📄 Link 2
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 2
 </a>
 
-<a class="sub" target="_blank" href="https://example.com">
-📄 Link 3
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 3
 </a>
 
-<a class="sub" target="_blank" href="https://example.com">
-📄 Link 4
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 4
 </a>
 
-<a class="sub" target="_blank" href="https://example.com">
-📄 Link 5
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 5
 </a>
 
 </div>
 
-</div>
+
+
+
+<!-- ADD MORE FOLDERS HERE -->
+
+
 
 </div>
 
-<!-- =========================
+
+</div>
+
+
+
+
+
+<!-- ==========================
         CATEGORY 2
-========================= -->
+=========================== -->
+
 
 <div class="main">
 
-<div class="ball" onclick="toggle('m2')">
-    <span>PCRP<br>(PAGKILOS)</span>
+
+<div class="ring" onclick="toggleMain('m2')">
+
+
+<div class="ball">
+
+PCRP<br>
+(PAGKILOS)
+
 </div>
+
+
+</div>
+
+
 
 <div id="m2" class="level">
 
-<div class="folder"
-onclick="event.stopPropagation();toggle('m2f1')">
+
+
+<div class="folder" onclick="toggleSub(event,'m2f1')">
 
 📁 Folder 1
 
 </div>
 
+
+
 <div id="m2f1" class="level2">
 
 
-<a class="sub" target="_blank" href="https://example.com">
-📄 Link 1
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 1
 </a>
 
-<a class="sub" target="_blank" href="https://example.com">
-📄 Link 2
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 2
 </a>
 
-<a class="sub" target="_blank" href="https://example.com">
-📄 Link 3
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 3
 </a>
 
-<a class="sub" target="_blank" href="https://example.com">
-📄 Link 4
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 4
 </a>
 
-<a class="sub" target="_blank" href="https://example.com">
-📄 Link 5
+<a class="sub" href="https://example.com" target="_blank">
+📂 Sub-Folder 5
 </a>
+
 
 </div>
 
-</div>
+
+
+
+<!-- ADD MORE FOLDERS HERE -->
+
+
 
 </div>
 
+
 </div>
 
-<footer>
 
-© 2026 Ghilous | All Rights Reserved.
 
-</footer>
+</div>
 
-<!-- =========================
+
+
+
+
+
+<!-- ==============================
         JAVASCRIPT SECTION
-========================= -->
+================================= -->
+
 
 <script>
 
-function toggle(id){
+
+// Open main category
+// Automatically closes other categories
+
+function toggleMain(id){
+
+
+    document
+    .querySelectorAll('.level')
+    .forEach(function(item){
+
+
+        if(item.id !== id){
+
+            item.style.display="none";
+
+        }
+
+
+    });
+
+
 
     let element=document.getElementById(id);
 
-    // Hide other main categories
 
-    if(element.classList.contains("level")){
-
-        document
-        .querySelectorAll(".level")
-        .forEach(item=>{
-
-            if(item !== element){
-
-                item.style.display="none";
-            }
-        });
-    }
-
-    // Open / Close selected folder
 
     element.style.display =
 
@@ -435,9 +465,43 @@ function toggle(id){
     ? "none"
 
     : "flex";
+
+
 }
 
+
+
+
+
+// Open sub folders
+
+function toggleSub(event,id){
+
+
+    event.stopPropagation();
+
+
+
+    let element=document.getElementById(id);
+
+
+
+    element.style.display =
+
+    element.style.display==="flex"
+
+    ? "none"
+
+    : "flex";
+
+
+}
+
+
+
 </script>
+
+
 
 </body>
 
