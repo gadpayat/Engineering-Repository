@@ -2,44 +2,334 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MOVs Repository</title>
+
+<!-- =========================
+        CSS STYLE SECTION
+========================= -->
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:transparent;overflow-x:hidden;color:#fff}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;
-background:repeating-linear-gradient(90deg,rgba(255,255,255,.03),rgba(255,255,255,.03) 2px,transparent 2px,transparent 90px);
-animation:wind 12s linear infinite}
-@keyframes wind{from{transform:translateX(-120px)}to{transform:translateX(120px)}}
-h1{text-align:center;padding:25px;font-size:42px;text-shadow:0 0 10px #7de9ff}
-.container{display:flex;justify-content:center;gap:140px;margin-top:30px}
-.main{text-align:center}
-.ball{
-width:170px;height:170px;border-radius:50%;cursor:pointer;border:6px solid #bbb;
-background:radial-gradient(circle at 30% 30%,#c8f7ff,#4cccf5,#2a86bb);
-box-shadow:inset 0 0 30px rgba(255,255,255,.7),0 0 25px #66ddff;
-animation:goo 3s ease-in-out infinite}
-@keyframes goo{50%{transform:scale(1.05,.95)}}
-.level,.level2{display:none;flex-direction:column;gap:10px;margin-top:15px}
-.folder{background:#f0c14b;color:#222;padding:10px 18px;border-radius:8px;cursor:pointer;font-weight:bold}
-.sub{background:#9dd8ff;color:#003;padding:8px;border-radius:6px;text-decoration:none}
-footer{position:fixed;bottom:10px;width:100%;text-align:center;font-size:13px}
-</style>
-</head>
-<body>
-<h1>MOVs Repository</h1>
-<div class="container">
-<div class="main"><div class="ball" onclick="toggle('m1')"></div><div id="m1" class="level"><div class="folder" onclick="event.stopPropagation();toggle('m1f1')">📁 Folder 1</div><div id="m1f1" class="level2"><a class="sub" target="_blank" href="https://example.com">📄 Link 1</a><a class="sub" target="_blank" href="https://example.com">📄 Link 2</a><a class="sub" target="_blank" href="https://example.com">📄 Link 3</a><a class="sub" target="_blank" href="https://example.com">📄 Link 4</a><a class="sub" target="_blank" href="https://example.com">📄 Link 5</a></div><div class="folder" onclick="event.stopPropagation();toggle('m1f2')">📁 Folder 2</div><div id="m1f2" class="level2"><a class="sub" target="_blank" href="https://example.com">📄 Link 1</a><a class="sub" target="_blank" href="https://example.com">📄 Link 2</a><a class="sub" target="_blank" href="https://example.com">📄 Link 3</a><a class="sub" target="_blank" href="https://example.com">📄 Link 4</a><a class="sub" target="_blank" href="https://example.com">📄 Link 5</a></div><div class="folder" onclick="event.stopPropagation();toggle('m1f3')">📁 Folder 3</div><div id="m1f3" class="level2"><a class="sub" target="_blank" href="https://example.com">📄 Link 1</a><a class="sub" target="_blank" href="https://example.com">📄 Link 2</a><a class="sub" target="_blank" href="https://example.com">📄 Link 3</a><a class="sub" target="_blank" href="https://example.com">📄 Link 4</a><a class="sub" target="_blank" href="https://example.com">📄 Link 5</a></div><div class="folder" onclick="event.stopPropagation();toggle('m1f4')">📁 Folder 4</div><div id="m1f4" class="level2"><a class="sub" target="_blank" href="https://example.com">📄 Link 1</a><a class="sub" target="_blank" href="https://example.com">📄 Link 2</a><a class="sub" target="_blank" href="https://example.com">📄 Link 3</a><a class="sub" target="_blank" href="https://example.com">📄 Link 4</a><a class="sub" target="_blank" href="https://example.com">📄 Link 5</a></div></div></div><div class="main"><div class="ball" onclick="toggle('m2')"></div><div id="m2" class="level"><div class="folder" onclick="event.stopPropagation();toggle('m2f1')">📁 Folder 1</div><div id="m2f1" class="level2"><a class="sub" target="_blank" href="https://example.com">📄 Link 1</a><a class="sub" target="_blank" href="https://example.com">📄 Link 2</a><a class="sub" target="_blank" href="https://example.com">📄 Link 3</a><a class="sub" target="_blank" href="https://example.com">📄 Link 4</a><a class="sub" target="_blank" href="https://example.com">📄 Link 5</a></div><div class="folder" onclick="event.stopPropagation();toggle('m2f2')">📁 Folder 2</div><div id="m2f2" class="level2"><a class="sub" target="_blank" href="https://example.com">📄 Link 1</a><a class="sub" target="_blank" href="https://example.com">📄 Link 2</a><a class="sub" target="_blank" href="https://example.com">📄 Link 3</a><a class="sub" target="_blank" href="https://example.com">📄 Link 4</a><a class="sub" target="_blank" href="https://example.com">📄 Link 5</a></div><div class="folder" onclick="event.stopPropagation();toggle('m2f3')">📁 Folder 3</div><div id="m2f3" class="level2"><a class="sub" target="_blank" href="https://example.com">📄 Link 1</a><a class="sub" target="_blank" href="https://example.com">📄 Link 2</a><a class="sub" target="_blank" href="https://example.com">📄 Link 3</a><a class="sub" target="_blank" href="https://example.com">📄 Link 4</a><a class="sub" target="_blank" href="https://example.com">📄 Link 5</a></div><div class="folder" onclick="event.stopPropagation();toggle('m2f4')">📁 Folder 4</div><div id="m2f4" class="level2"><a class="sub" target="_blank" href="https://example.com">📄 Link 1</a><a class="sub" target="_blank" href="https://example.com">📄 Link 2</a><a class="sub" target="_blank" href="https://example.com">📄 Link 3</a><a class="sub" target="_blank" href="https://example.com">📄 Link 4</a><a class="sub" target="_blank" href="https://example.com">📄 Link 5</a></div></div></div>
-</div>
-<footer>© 2026 Ghilous | All Rights Reserved.</footer>
-<script>
-function hide(cls){document.querySelectorAll(cls).forEach(e=>e.style.display='none')}
-function toggle(id){
- let el=document.getElementById(id);
- if(el.classList.contains('level')){
- document.querySelectorAll('.level').forEach(x=>{if(x!=el)x.style.display='none'});
- }
- el.style.display=el.style.display==='flex'?'none':'flex';
+
+/* GLOBAL SETTINGS */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
 }
+
+body{
+    background:transparent;
+    overflow-x:hidden;
+    color:white;
+}
+ 
+/* Animated background effect */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+    repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 2px,
+        transparent 2px,
+        transparent 90px
+    );
+    animation:wind 12s linear infinite;
+}
+
+@keyframes wind{
+
+    from{
+        transform:translateX(-120px);
+    }
+    to{
+        transform:translateX(120px);
+    }
+}
+
+/* MAIN TITLE */
+
+h1{
+    text-align:center;
+    padding:25px;
+    font-size:42px;
+    text-shadow:
+    0 0 10px #7de9ff;
+}
+
+/* MAIN CONTAINER */
+
+.container{
+    display:flex;
+    justify-content:center;
+    gap:140px;
+    margin-top:30px;
+}
+ 
+.main{
+    text-align:center;
+}
+
+/* MAIN BALL BUTTON */
+
+.ball{
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    cursor:pointer;
+    border:6px solid #bbb;
+    background:
+    radial-gradient(
+        circle at 30% 30%,
+        #c8f7ff,
+        #4cccf5,
+        #2a86bb
+    );
+    box-shadow:
+    inset 0 0 30px rgba(255,255,255,.7),
+    0 0 25px #66ddff;
+    animation:goo 3s ease-in-out infinite;
+}
+
+@keyframes goo{
+
+    50%{
+        transform:scale(1.05,.95);
+    }
+}
+
+/* FOLDER LEVELS */
+
+.level,
+.level2{
+    display:none;
+    flex-direction:column;
+    gap:10px;
+    margin-top:15px;
+}
+
+/* FOLDER BUTTON */
+
+.folder{
+    background:#f0c14b;
+    color:#222;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* DOCUMENT LINKS */
+
+.sub{
+    background:#9dd8ff;
+    color:#003;
+    padding:8px;
+    border-radius:6px;
+    text-decoration:none;
+}
+
+/* FOOTER */
+
+footer{
+    position:fixed;
+    bottom:10px;
+    width:100%;
+    text-align:center;
+    font-size:13px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>MOVs Repository</h1>
+
+<!-- =========================
+        MAIN BUTTON SECTION
+========================= -->
+
+<div class="container">
+
+<!-- =========================
+        CATEGORY 1
+========================= -->
+
+<div class="main">
+
+<div class="ball" onclick="toggle('m1')"></div>
+
+<div id="m1" class="level">
+
+<!-- Folder 1 -->
+
+<div class="folder"
+onclick="event.stopPropagation();toggle('m1f1')">
+
+📁 Folder 1
+
+</div>
+
+<div id="m1f1" class="level2">
+
+<a class="sub" target="_blank" href="https://example.com">
+📄 Link 1
+</a>
+
+<a class="sub" target="_blank" href="https://example.com">
+📄 Link 2
+</a>
+
+<a class="sub" target="_blank" href="https://example.com">
+📄 Link 3
+</a>
+
+<a class="sub" target="_blank" href="https://example.com">
+📄 Link 4
+</a>
+
+<a class="sub" target="_blank" href="https://example.com">
+📄 Link 5
+</a>
+
+</div>
+
+<!-- Folder 2 -->
+
+<div class="folder"
+onclick="event.stopPropagation();toggle('m1f2')">
+
+📁 Folder 2
+
+</div>
+
+<div id="m1f2" class="level2">
+
+<a class="sub" target="_blank" href="https://example.com">
+📄 Link 1
+</a>
+
+<a class="sub" target="_blank" href="https://example.com">
+📄 Link 2
+</a>
+
+<a class="sub" target="_blank" href="https://example.com">
+📄 Link 3
+</a>
+
+<a class="sub" target="_blank" href="https://example.com">
+📄 Link 4
+</a>
+
+<a class="sub" target="_blank" href="https://example.com">
+📄 Link 5
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================
+        CATEGORY 2
+========================= -->
+
+<div class="main">
+
+<div class="ball" onclick="toggle('m2')"></div>
+
+<div id="m2" class="level">
+
+<div class="folder"
+onclick="event.stopPropagation();toggle('m2f1')">
+
+📁 Folder 1
+
+</div>
+
+<div id="m2f1" class="level2">
+
+
+<a class="sub" target="_blank" href="https://example.com">
+📄 Link 1
+</a>
+
+<a class="sub" target="_blank" href="https://example.com">
+📄 Link 2
+</a>
+
+<a class="sub" target="_blank" href="https://example.com">
+📄 Link 3
+</a>
+
+<a class="sub" target="_blank" href="https://example.com">
+📄 Link 4
+</a>
+
+<a class="sub" target="_blank" href="https://example.com">
+📄 Link 5
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 Ghilous | All Rights Reserved.
+
+</footer>
+
+<!-- =========================
+        JAVASCRIPT SECTION
+========================= -->
+
+<script>
+
+function toggle(id){
+
+    let element=document.getElementById(id);
+
+    // Hide other main categories
+
+    if(element.classList.contains("level")){
+
+        document
+        .querySelectorAll(".level")
+        .forEach(item=>{
+
+            if(item !== element){
+
+                item.style.display="none";
+            }
+        });
+    }
+
+    // Open / Close selected folder
+
+    element.style.display =
+
+    element.style.display==="flex"
+
+    ? "none"
+
+    : "flex";
+}
+
 </script>
-</body></html>
+
+</body>
+
+</html>
