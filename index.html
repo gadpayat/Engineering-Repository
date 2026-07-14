@@ -1,32 +1,726 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>MOVs Repository</title>
+
+
+<!-- =====================================
+                CSS STYLE
+===================================== -->
+
 <style>
-*{box-sizing:border-box;font-family:Arial,sans-serif}
-html,body{margin:0;background:transparent;color:#fff;overflow:hidden}
-body{position:relative;min-height:100vh}
-.wind{position:fixed;width:180px;height:4px;border-radius:20px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);filter:blur(1px);animation:windMove linear infinite}
-@keyframes windMove{0%{transform:translateX(-250px);opacity:0}10%,90%{opacity:.8}100%{transform:translateX(calc(100vw + 250px));opacity:0}}
-.container{display:flex;justify-content:center;gap:120px;padding:30px;filter:url(#gooey)}
-.main{text-align:center}
-h1{text-align:center}
-.ring{width:182px;height:182px;padding:6px;border-radius:50%;background:linear-gradient(145deg,#fff,#ddd,#999,#fff,#777,#fff);cursor:pointer;animation:liquidFloat 5s ease-in-out infinite,pulseBlob 3s ease-in-out infinite}
-.ball{width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:bold;font-size:22px;color:#fff;background:linear-gradient(145deg,#f7fdff,#d6f5ff,#9ee8ff,#68d3ff,#3fb8f2,#8be6ff,#2698d7,#75dfff,#1d7fbc,#d9f8ff);animation:blobMorph 6s ease-in-out infinite}
-@keyframes liquidFloat{0%,100%{transform:translateY(0)}25%{transform:translate(-4px,-8px)}50%{transform:translate(5px,5px)}75%{transform:translate(2px,-5px)}}
-@keyframes pulseBlob{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-@keyframes blobMorph{0%,100%{border-radius:45% 55% 50% 50%/55% 45% 55% 45%}25%{border-radius:60% 40% 45% 55%/40% 60% 50% 50%}50%{border-radius:50% 50% 60% 40%/60% 40% 45% 55%}75%{border-radius:42% 58% 55% 45%/55% 45% 60% 40%}}
-.level,.level2{display:none;flex-direction:column;gap:8px;margin-top:10px}
-.folder{background:#e7c04a;color:#222;padding:10px;border-radius:8px;cursor:pointer}
-.sub{display:block;background:#bfe8ff;color:#003;text-decoration:none;padding:8px;border-radius:6px}
-</style></head><body>
-<div class="wind" style="top:8%;animation-duration:9s"></div><div class="wind" style="top:18%;animation-duration:7s"></div><div class="wind" style="top:35%;animation-duration:11s"></div><div class="wind" style="top:55%;animation-duration:8s"></div><div class="wind" style="top:75%;animation-duration:10s"></div>
-<h1>MOVs Repository</h1>
+
+/* ==========================
+       GLOBAL SETTINGS
+========================== */
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+html,
+body {
+
+    margin: 0;
+
+    background: transparent;
+
+    color: #fff;
+
+    overflow: hidden;
+
+}
+
+
+body {
+
+    position: relative;
+
+    min-height: 100vh;
+
+}
+
+
+/* ==========================
+        WIND EFFECT
+========================== */
+
+
+.wind {
+
+    position: fixed;
+
+    width: 180px;
+
+    height: 4px;
+
+    border-radius: 20px;
+
+
+    background:
+
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.35),
+        transparent
+    );
+
+
+    filter: blur(1px);
+
+
+    animation:
+
+    windMove linear infinite;
+
+}
+
+
+
+@keyframes windMove {
+
+
+    0% {
+
+        transform: translateX(-250px);
+
+        opacity: 0;
+
+    }
+
+
+    10%,
+    90% {
+
+        opacity: .8;
+
+    }
+
+
+    100% {
+
+        transform:
+        translateX(calc(100vw + 250px));
+
+        opacity: 0;
+
+    }
+
+}
+
+
+
+/* ==========================
+          MAIN LAYOUT
+========================== */
+
+
+.container {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 120px;
+
+    padding: 30px;
+
+
+    filter: url(#gooey);
+
+}
+
+
+
+.main {
+
+    text-align: center;
+
+}
+
+
+
+h1 {
+
+    text-align: center;
+
+}
+
+
+
+/* ==========================
+          LIQUID BUTTON
+========================== */
+
+
+.ring {
+
+    width: 182px;
+
+    height: 182px;
+
+
+    padding: 6px;
+
+
+    border-radius: 50%;
+
+
+    background:
+
+    linear-gradient(
+        145deg,
+        #fff,
+        #ddd,
+        #999,
+        #fff,
+        #777,
+        #fff
+    );
+
+
+    cursor: pointer;
+
+
+    animation:
+
+    liquidFloat 5s ease-in-out infinite,
+
+    pulseBlob 3s ease-in-out infinite;
+
+}
+
+
+
+
+.ball {
+
+
+    width: 100%;
+
+    height: 100%;
+
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+
+    text-align: center;
+
+
+    font-weight: bold;
+
+    font-size: 22px;
+
+
+    color: #fff;
+
+
+
+    background:
+
+
+    linear-gradient(
+        145deg,
+        #f7fdff,
+        #d6f5ff,
+        #9ee8ff,
+        #68d3ff,
+        #3fb8f2,
+        #8be6ff,
+        #2698d7,
+        #75dfff,
+        #1d7fbc,
+        #d9f8ff
+    );
+
+
+    animation:
+
+    blobMorph 6s ease-in-out infinite;
+
+}
+
+
+
+
+/* ==========================
+          ANIMATIONS
+========================== */
+
+
+@keyframes liquidFloat {
+
+
+    0%,
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+
+    25% {
+
+        transform: translate(-4px,-8px);
+
+    }
+
+
+    50% {
+
+        transform: translate(5px,5px);
+
+    }
+
+
+    75% {
+
+        transform: translate(2px,-5px);
+
+    }
+
+}
+
+
+
+@keyframes pulseBlob {
+
+
+    0%,
+    100% {
+
+        transform: scale(1);
+
+    }
+
+
+    50% {
+
+        transform: scale(1.06);
+
+    }
+
+}
+
+
+
+@keyframes blobMorph {
+
+
+    0%,
+    100% {
+
+        border-radius:
+
+        45% 55% 50% 50% /
+
+        55% 45% 55% 45%;
+
+    }
+
+
+    25% {
+
+        border-radius:
+
+        60% 40% 45% 55% /
+
+        40% 60% 50% 50%;
+
+    }
+
+
+    50% {
+
+        border-radius:
+
+        50% 50% 60% 40% /
+
+        60% 40% 45% 55%;
+
+    }
+
+
+    75% {
+
+        border-radius:
+
+        42% 58% 55% 45% /
+
+        55% 45% 60% 40%;
+
+    }
+
+}
+
+
+
+/* ==========================
+          FOLDER MENU
+========================== */
+
+
+.level,
+.level2 {
+
+    display: none;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-top: 10px;
+
+}
+
+
+
+.folder {
+
+    background: #e7c04a;
+
+    color: #222;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+}
+
+
+
+.sub {
+
+    display: block;
+
+    background: #bfe8ff;
+
+    color: #003;
+
+    text-decoration: none;
+
+    padding: 8px;
+
+    border-radius: 6px;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+
+<!-- =====================================
+              WIND PARTICLES
+===================================== -->
+
+
+<div class="wind"
+style="top:8%;animation-duration:9s"></div>
+
+<div class="wind"
+style="top:18%;animation-duration:7s"></div>
+
+<div class="wind"
+style="top:35%;animation-duration:11s"></div>
+
+<div class="wind"
+style="top:55%;animation-duration:8s"></div>
+
+<div class="wind"
+style="top:75%;animation-duration:10s"></div>
+
+
+
+
+<h1>
+MOVs Repository
+</h1>
+
+
+
+<!-- =====================================
+              MAIN BUTTONS
+===================================== -->
+
+
 <div class="container">
-<div class="main"><div class="ring" onclick="toggleMain('m1')"><div class="ball">KKB-CDD</div></div><div id="m1" class="level"><div class="folder" onclick="toggleSub(event,'a')">📁 Folder 1</div><div id="a" class="level2"><a class="sub" target="_blank" href="https://example.com">📂 Subfolder</a></div></div></div>
-<div class="main"><div class="ring" onclick="toggleMain('m2')"><div class="ball">PCRP<br>(PAGKILOS)</div></div><div id="m2" class="level"><div class="folder" onclick="toggleSub(event,'b')">📁 Folder 1</div><div id="b" class="level2"><a class="sub" target="_blank" href="https://example.com">📂 Subfolder</a></div></div></div>
+
+
+
+<!-- ======================
+        KKB-CDD BUTTON
+====================== -->
+
+
+<div class="main">
+
+
+<div class="ring" onclick="toggleMain('m1')">
+
+<div class="ball">
+
+KKB-CDD
+
 </div>
-<svg width="0" height="0"><filter id="gooey"><feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"/><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 22 -10" result="goo"/><feBlend in="SourceGraphic" in2="goo"/></filter></svg>
+
+</div>
+
+
+
+<div id="m1" class="level">
+
+
+<div class="folder"
+onclick="toggleSub(event,'a')">
+
+📁 Folder 1
+
+</div>
+
+
+
+<div id="a" class="level2">
+
+
+<a class="sub"
+target="_blank"
+href="https://example.com">
+
+📂 Subfolder
+
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- ======================
+          PCRP BUTTON
+====================== -->
+
+
+<div class="main">
+
+
+<div class="ring"
+onclick="toggleMain('m2')">
+
+
+<div class="ball">
+
+PCRP<br>
+
+(PAGKILOS)
+
+</div>
+
+
+</div>
+
+
+
+<div id="m2" class="level">
+
+
+<div class="folder"
+onclick="toggleSub(event,'b')">
+
+📁 Folder 1
+
+</div>
+
+
+
+<div id="b" class="level2">
+
+
+<a class="sub"
+target="_blank"
+href="https://example.com">
+
+📂 Subfolder
+
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- =====================================
+             GOOEY SVG FILTER
+===================================== -->
+
+
+<svg width="0" height="0">
+
+<filter id="gooey">
+
+
+<feGaussianBlur
+
+in="SourceGraphic"
+
+stdDeviation="12"
+
+result="blur"/>
+
+
+<feColorMatrix
+
+in="blur"
+
+mode="matrix"
+
+values="
+1 0 0 0 0
+0 1 0 0 0
+0 0 1 0 0
+0 0 0 22 -10"
+
+result="goo"/>
+
+
+
+<feBlend
+
+in="SourceGraphic"
+
+in2="goo"/>
+
+
+</filter>
+
+
+</svg>
+
+
+
+
+
+
+<!-- =====================================
+              JAVASCRIPT
+===================================== -->
+
+
 <script>
-function toggleMain(id){document.querySelectorAll('.level').forEach(x=>{if(x.id!==id)x.style.display='none'});let e=document.getElementById(id);e.style.display=e.style.display==='flex'?'none':'flex';}
-function toggleSub(ev,id){ev.stopPropagation();let e=document.getElementById(id);e.style.display=e.style.display==='flex'?'none':'flex';}
-</script></body></html>
+
+
+// Toggle Main Categories
+
+function toggleMain(id){
+
+
+    document
+    .querySelectorAll('.level')
+    .forEach(x => {
+
+
+        if(x.id !== id){
+
+            x.style.display = "none";
+
+        }
+
+
+    });
+
+
+
+    let e = document.getElementById(id);
+
+
+
+    e.style.display =
+
+    e.style.display === "flex"
+
+    ? "none"
+
+    : "flex";
+
+
+}
+
+
+
+
+// Toggle Subfolders
+
+function toggleSub(ev,id){
+
+
+    ev.stopPropagation();
+
+
+
+    let e = document.getElementById(id);
+
+
+
+    e.style.display =
+
+    e.style.display === "flex"
+
+    ? "none"
+
+    : "flex";
+
+
+}
+
+
+</script>
+
+
+
+</body>
+
+</html>
