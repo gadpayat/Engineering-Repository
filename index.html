@@ -517,7 +517,32 @@ h1{
   
 }
 
+/* ==========================
+          FOOTER
+========================== */
 
+footer{
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+
+    text-align: center;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.5px;
+
+    text-shadow:
+        0 0 6px rgba(0,0,0,.6),
+        0 0 10px rgba(255,215,0,.35);
+
+    z-index: 9999;
+    pointer-events: none; /* Prevents footer from blocking clicks */
+}
+
+  
 </style>
 
 
@@ -942,7 +967,9 @@ function toggleSub(ev,id){
 
 </script>
 
-
+<footer>
+    © 2026 Ghilous. All Rights Reserved.
+</footer>
 
 </body>
 
