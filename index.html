@@ -523,19 +523,18 @@ h1{
 
 footer{
     position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
 
-    height: 40px;
-    line-height: 40px;
-
-    text-align: center;
     font-size: 14px;
-    color: white;
+    color: rgba(255,255,255,.9);
 
-    background: rgba(0,0,0,.45);
-    backdrop-filter: blur(8px);
+    background: transparent;
+
+    text-shadow:
+        0 0 5px rgba(0,0,0,.8),
+        0 0 12px rgba(255,215,0,.35);
 
     z-index: 9999;
 }
