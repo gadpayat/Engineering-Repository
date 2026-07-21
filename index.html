@@ -28,20 +28,25 @@
 
 html,
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 .page{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:60px;              /* Space between title and buttons */
-    width:100%;
-    padding-top: 50px;   /* Move everything down */
-  
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    padding-top: 35px;
+    padding-bottom: 70px;
+
+    width: 100%;
 }
   
 /* ==========================
@@ -523,18 +528,23 @@ h1{
 
 footer{
     position: fixed;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+
+    text-align: center;
 
     font-size: 14px;
-    color: rgba(255,255,255,.9);
+    color: white;
 
-    background: transparent;
+    background: rgba(0,0,0,.35);
+    backdrop-filter: blur(8px);
 
-    text-shadow:
-        0 0 5px rgba(0,0,0,.8),
-        0 0 12px rgba(255,215,0,.35);
+    border-top: 1px solid rgba(255,255,255,.15);
 
     z-index: 9999;
 }
